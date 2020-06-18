@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = array
+OBJECT = array newdelete
 
 all : $(OBJECT)
 
