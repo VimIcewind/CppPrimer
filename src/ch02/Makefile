@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = array newdelete
+OBJECT = array newdelete IntArray
 
 all : $(OBJECT)
 
