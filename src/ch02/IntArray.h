@@ -38,4 +38,61 @@ protected:
 
 };
 
+IntArray::IntArray(int sz)
+{
+	_size = sz;
+	ia = new int[_size];
+
+	for (int ix = 0; ix < _size; ++ix)
+		ia[ix] = 0;
+}
+
+IntArray::IntArray(int *array, int sz)
+{
+	_size = sz;
+	ia = new int[_size];
+
+	for (int ix = 0; ix < _size; ++ix)
+		ia[ix] = array[ix];
+}
+
+IntArray::IntArray(const IntArray &rhs)
+{
+	_size = rhs._size;
+	ia = new int[_size];
+
+	for (int ix = 0; ix < _size; ix++)
+		ia[ix] = rhs.ia[ix];
+}
+
+int& IntArray::operator[](int index)
+{
+	return ia[index];
+}
+
+void IntArray::init(IntArray ia){
+	for (int ix = 0; ix <ia.size(); ++ix)
+		ia[ix] = ix;
+}
+
+void IntArray::sort()
+{
+
+}
+
+int IntArray::min() const
+{
+	return 0;
+}
+
+int IntArray::max() const
+{
+	return 0;
+}
+
+int IntArray::find(int value) const
+{
+	return 0;
+}
+
 #endif
