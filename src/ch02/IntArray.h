@@ -1,6 +1,5 @@
-#include <iostream>
-#include <cassert>
-using namespace std;
+#ifndef IntArray_H
+#define IntArray_H
 
 class IntArray {
 public:
@@ -38,3 +37,5 @@ protected:
 	int *ia;
 
 };
+
+#endif
