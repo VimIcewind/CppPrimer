@@ -36,6 +36,31 @@ int& IntArray::operator[](int index)
 	return ia[index];
 }
 
+void IntArray::sort()
+{
+
+}
+
+int IntArray::min() const
+{
+	return 0;
+}
+
+int IntArray::max() const
+{
+	return 0;
+}
+
+int IntArray::find(int value) const
+{
+	return 0;
+}
+
+void IntArray::init(IntArray ia){
+	for (int ix = 0; ix <ia.size(); ++ix)
+		ia[ix] = ix;
+}
+
 int main(int argc, char *argv[])
 {
 	int ix[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};

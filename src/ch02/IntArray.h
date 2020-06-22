@@ -10,7 +10,7 @@ public:
 
 	IntArray(const IntArray &rhs);
 
-	~IntArray() {
+	virtual ~IntArray() {
 		delete [] ia;
 	}
 
@@ -19,19 +19,22 @@ public:
 
 	IntArray& operator=(const IntArray&);
 
-	int& operator[](int index);
-
 	int size() const { return _size;};
-	void sort();
 
-	int min() const;
-	int max() const;
+	virtual int& operator[](int index);
 
-	int find(int value) const;
+	virtual void sort();
 
-private:
+	virtual int min() const;
+	virtual int max() const;
+
+	virtual int find(int value) const;
+
+protected:
+	static const int DefaultArraySize = 12;
+	void init(IntArray ia);
+	void init(int sz, int *array);
 	int _size;
 	int *ia;
-	static const int DefaultArraySize = 0;
 
 };
