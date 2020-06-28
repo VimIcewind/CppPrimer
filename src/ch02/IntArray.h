@@ -70,7 +70,8 @@ int& IntArray::operator[](int index)
 	return ia[index];
 }
 
-void IntArray::init(IntArray ia){
+void IntArray::init(IntArray ia)
+{
 	for (int ix = 0; ix <ia.size(); ++ix)
 		ia[ix] = ix;
 }
