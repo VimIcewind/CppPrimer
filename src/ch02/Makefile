@@ -1,12 +1,15 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = array newdelete IntArray IntArrayRC ArrayTest
+OBJECT = array newdelete IntArray IntArrayRC ArrayTest ArrayRCTest
 
 all : $(OBJECT)
 
 ArrayTest : Array.h ArrayTest.cpp
 	$(CC) $(CFLAGS) -o ArrayTest ArrayTest.cpp
+
+ArrayRCTest : Array.h ArrayRC.h ArrayRCTest.cpp
+	$(CC) $(CFLAGS) -o ArrayRCTest ArrayRCTest.cpp
 
 IntArray : IntArray.h IntArray.cpp
 	$(CC) $(CFLAGS) -o IntArray IntArray.cpp
