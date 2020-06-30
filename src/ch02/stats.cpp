@@ -58,10 +58,10 @@ private:
 
 void do_something(const int *ia)
 {
-	throw statsException("do_something");
+	throw statsException("do_something()");
 }
 
-int * stats(const int *ia, int size)
+int *stats(const int *ia, int size)
 {
 	int *pstats = new int[4];
 
@@ -70,9 +70,14 @@ int * stats(const int *ia, int size)
 		pstats[1] = min_val(ia, size);
 		pstats[2] = max_val(ia, size);
 	} catch (string exceptionMsg) {
-
+		cerr << "stats(): exception occurred: "
+		     << exceptionMsg
+		     << " unable to stat array "
+		     << endl;
+		delete [] pstats;
+		return 0;
 	} catch (const statsException &stasExcep) {
-
+		throw statsException("stats()");
 	}
 
 	pstats[3] = pstats[0]/size;
