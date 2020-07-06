@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = array newdelete IntArray IntArrayRC ArrayTest ArrayRCTest stats
+OBJECT = array newdelete IntArray IntArrayRC ArrayTest ArrayRCTest stats alloc_init
 
 all : $(OBJECT)
 
