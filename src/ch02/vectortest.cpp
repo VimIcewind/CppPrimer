@@ -16,10 +16,11 @@ void mumble()
 
 	vector<int>::iterator iter = vec.begin();
 
-	for (int ix = 0; ix < size; ++ix)
-		vec[ix] = ix;
+	for (int ix = 0; iter != vec.end(); ++iter, ++ix)
+		*iter = ix;
 
-	for (int ix = 0; ix < size; ++ix)
+	iter = vec.begin();
+	for (int ix = 0; iter != vec.end(); ++iter, ++ix)
 		cout << "vec[" << ix << "]" <<" = " << ix << endl;
 }
 
