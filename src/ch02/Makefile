@@ -1,8 +1,8 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = array newdelete IntArray IntArrayRC ArrayTest ArrayRCTest stats alloc_init \
-	vectortest sort
+OBJECT = array newdelete IntArray IntArrayRC ArrayTest ArrayRCTest stats \
+	alloc_init vectortest sort map
 
 all : $(OBJECT)
 
