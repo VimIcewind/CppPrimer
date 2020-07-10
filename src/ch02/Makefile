@@ -2,7 +2,7 @@ CFLAGS=-g -Og
 CC=g++
 
 OBJECT = array newdelete IntArray IntArrayRC ArrayTest ArrayRCTest stats \
-	alloc_init vectortest sort map
+	alloc_init vectortest sort map min
 
 all : $(OBJECT)
 
