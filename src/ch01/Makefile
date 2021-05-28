@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = bookstore bookstore_if loop main cplusplus stdc fstream
+OBJECT = bookstore bookstore_if loop main cplusplus stdc predefine fstream
 
 all : $(OBJECT)
 
