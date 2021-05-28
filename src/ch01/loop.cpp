@@ -15,4 +15,5 @@ int main(void)
 		if (iterations == 5)
 			continue_loop = false;
 	}
+	return 0;
 }
