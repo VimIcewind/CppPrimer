@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = bookstore fstream
+OBJECT = bookstore bookstore_if fstream
 
 all : $(OBJECT)
 
