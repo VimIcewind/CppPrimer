@@ -9,7 +9,7 @@ int main()
 	while (*pi < 10) {
 		pia[*pi] = *pi;
 		cout << "*pi = " << *pi <<endl;
-		cout << "pia[*pi] = " << *pi << endl;
+		cout << "pia["<< *pi <<"] = " << *pi << endl;
 		*pi = *pi + 1;
 	}
 	delete pi;
