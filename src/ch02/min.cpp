@@ -42,7 +42,8 @@ elemType min2(const vector<elemType> &vec)
 
 int main(int argc, char *argv[])
 {
-	vector<int> iv = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3};
+	int array[] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3};
+	vector<int> iv(array, array+10);
 
 	cout << min1(iv) << endl;
 	cout << min2(iv) << endl;

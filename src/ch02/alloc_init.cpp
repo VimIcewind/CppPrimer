@@ -25,7 +25,7 @@ void register_data(int *pi)
 int *alloc_and_init(string file_name)
 {
 	try {
-		ifstream infile(file_name);
+		ifstream infile(file_name.c_str());
 		if (!infile)
 			throw "cannot open file";
 		int elem_cnt;

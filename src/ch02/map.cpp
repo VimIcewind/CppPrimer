@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
 	map<string,string>::iterator iter;
 
-	for(iter = telephone_directory.begin(); iter != telephone_directory.end(); iter++)
+	for (iter = telephone_directory.begin(); iter != telephone_directory.end(); iter++)
 		cout << iter->first << ' ' << iter->second << endl;
 
 	return 0;

@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-void swap(IntArray& ia, int i, int j)
+void swap(IntArray &ia, int i, int j)
 {
 	int temp;
 
