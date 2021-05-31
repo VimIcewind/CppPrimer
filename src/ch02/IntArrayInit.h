@@ -40,29 +40,17 @@ protected:
 
 IntArray::IntArray(int sz)
 {
-	_size = sz;
-	ia = new int[_size];
-
-	for (int ix = 0; ix < _size; ++ix)
-		ia[ix] = 0;
+	init(sz, 0);
 }
 
 IntArray::IntArray(int *array, int sz)
 {
-	_size = sz;
-	ia = new int[_size];
-
-	for (int ix = 0; ix < _size; ++ix)
-		ia[ix] = array[ix];
+	init(sz, array);
 }
 
 IntArray::IntArray(const IntArray &rhs)
 {
-	_size = rhs._size;
-	ia = new int[_size];
-
-	for (int ix = 0; ix < _size; ix++)
-		ia[ix] = rhs.ia[ix];
+	init(rhs._size, rhs.ia);
 }
 
 int& IntArray::operator[](int index)
