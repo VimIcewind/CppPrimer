@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = pow2
+OBJECT = pow2 foobar
 
 all : $(OBJECT)
 
