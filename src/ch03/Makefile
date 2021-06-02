@@ -3,7 +3,7 @@ CC=g++
 
 OBJECT = pow2 pointeriter foobar stringlength emptystring strlen string carr cppstring \
 	 const reference val_ptr_ref_assign array arrayarray arraypointer arraypointer1 \
-	 printtemplate sort vector complex typedef volatile
+	 printtemplate sort vector complex typedef volatile pair
 
 all : $(OBJECT)
 
