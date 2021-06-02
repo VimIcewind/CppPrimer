@@ -2,7 +2,7 @@ CFLAGS=-g -Og
 CC=g++
 
 OBJECT = pow2 pointeriter foobar stringlength emptystring strlen string carr cppstring \
-	 const
+	 const reference val_ptr_ref_assign
 
 all : $(OBJECT)
 
