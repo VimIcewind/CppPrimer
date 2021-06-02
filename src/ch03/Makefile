@@ -1,7 +1,8 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = pow2 pointeriter foobar stringlength emptystring strlen string carr cppstring
+OBJECT = pow2 pointeriter foobar stringlength emptystring strlen string carr cppstring \
+	 const
 
 all : $(OBJECT)
 
