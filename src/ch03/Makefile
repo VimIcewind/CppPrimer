@@ -3,12 +3,14 @@ CC=g++
 
 OBJECT = pow2 pointeriter foobar stringlength emptystring strlen string carr cppstring \
 	 const reference val_ptr_ref_assign array arrayarray arraypointer arraypointer1 \
-	 printtemplate sort vector complex typedef volatile pair
+	 printtemplate sort vector complex typedef volatile pair StringTest
 
 all : $(OBJECT)
 
 pow2 : pow2.cpp pow.cpp
 	$(CC) $(CFLAGS) -o pow2 pow2.cpp pow.cpp
+StringTest : StringTest.cpp String.cpp String.h
+	$(CC) $(CFLAGS) -o StringTest StringTest.cpp String.cpp String.h
 
 .cpp.s :
 	$(CC) $(CFLAGS) -S $*.cpp
