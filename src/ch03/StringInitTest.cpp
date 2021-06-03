@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
 	int aCnt = 0, eCnt = 0, iCnt = 0, oCnt = 0, uCnt = 0,
+	bCnt = 0, dCnt = 0, fCnt = 0, sCnt = 0, tCnt = 0,
 	theCnt = 0, itCnt = 0, wdCnt = 0, notVowel = 0;
 	// 为了使用 operator==(const char *)
 	// 我们并不定义 The ("The") 和 It ("It")
@@ -34,6 +35,11 @@ int main()
 			case 'i': case 'I': ++iCnt; break;
 			case 'o': case 'O': ++oCnt; break;
 			case 'u': case 'U': ++uCnt; break;
+			case 'b': case 'B': ++bCnt; ++notVowel; break;
+			case 'd': case 'D': ++dCnt; ++notVowel; break;
+			case 'f': case 'F': ++fCnt; ++notVowel; break;
+			case 's': case 'S': ++sCnt; ++notVowel; break;
+			case 't': case 'T': ++tCnt; ++notVowel; break;
 			default: ++notVowel; break;
 			}
 		}
@@ -49,7 +55,12 @@ int main()
 		<< "e: " << eCnt << '\n'
 		<< "i: " << iCnt << '\n'
 		<< "o: " << oCnt << '\n'
-		<< "u: " << uCnt << endl;
+		<< "u: " << aCnt << '\n'
+		<< "b: " << bCnt << '\n'
+		<< "d: " << dCnt << '\n'
+		<< "f: " << fCnt << '\n'
+		<< "s: " << sCnt << '\n'
+		<< "t: " << tCnt << endl;
 
 	return 0;
 }
