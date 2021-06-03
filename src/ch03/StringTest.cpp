@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main(void)
+int main()
 {
 	int aCnt = 0, eCnt = 0, iCnt = 0, oCnt = 0, uCnt = 0,
 	theCnt = 0, itCnt = 0, wdCnt = 0, notVowel = 0;

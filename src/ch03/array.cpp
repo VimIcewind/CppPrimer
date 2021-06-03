@@ -5,7 +5,7 @@ using namespace std;
 const int array_size = 7;
 int ia1[] = {0, 1, 2, 3, 4, 5, 6};
 
-int main(void)
+int main()
 {
 	int ia2[array_size];
 

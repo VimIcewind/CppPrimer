@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(void)
+int main()
 {
 	const int rowSize = 4;
 	const int colSize = 3;

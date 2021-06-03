@@ -24,7 +24,7 @@ extern const cstring cstr;
 // 第一个回答差不多都是：const char *cstr 即指向 const 字符的指针。但是，这是不准确的。const 修饰 cstr 的类型。
 // cstr 是一个指针，因此，这个定义声明了 cstr 是一个指向字符的 const 指针 char *const cstr;
 
-int main(void)
+int main()
 {
 	const int class_size = 16;
 

@@ -4,7 +4,7 @@ using namespace std;
 
 const char *st = "The expense of spirit\n";
 
-int main(void)
+int main()
 {
 	int len = 0;
 	const char *p = st;

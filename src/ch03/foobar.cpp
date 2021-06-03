@@ -11,7 +11,7 @@ int foobar(int *pi) {
 	}
 }
 
-int main(void)
+int main()
 {
 	int ival2 = 0;
 	int ival = foobar(&ival2);

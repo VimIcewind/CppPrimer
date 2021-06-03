@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(void)
+int main()
 {
 	int ia[9] = {0, 1, 1, 2, 3, 5, 8, 18, 21};
 	int *pbegin = ia;

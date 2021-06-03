@@ -12,7 +12,7 @@ void print(elemType *pbegin, elemType *pend)
 	cout << endl;
 }
 
-int main(void)
+int main()
 {
 	int ia[9] = {0, 1, 1, 2, 3, 5, 8, 13, 21};
 	double da[4] = {3.14, 6.28, 12.56, 25.12};

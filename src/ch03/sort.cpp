@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main(void)
+int main()
 {
 	int ia[6] = {107, 28, 3, 47, 104, 76};
 	string sa[3] = {"piglet", "eeyore", "pooh"};

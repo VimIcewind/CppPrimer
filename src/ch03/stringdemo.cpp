@@ -6,7 +6,7 @@ using namespace std;
 
 string st("The expense of spirit\n");
 
-int main(void)
+int main()
 {
 	cout << "The size of "
 		<< st

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main(void)
+int main()
 {
 	// 纯虚数：0 + 7i
 	complex<double> purei(0, 7);

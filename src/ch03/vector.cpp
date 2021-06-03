@@ -56,7 +56,7 @@ void read_write()
 	cout << endl;
 }
 
-int main(void)
+int main()
 {
 	vector<int> ivec(10);
 

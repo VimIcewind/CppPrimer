@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(void)
+int main()
 {
 	char *pc1 = 0;
 	const char *pc2 = "";

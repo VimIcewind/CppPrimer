@@ -14,7 +14,7 @@ int string_length(const char *st)
 	return cnt;
 }
 
-int main(void)
+int main()
 {
 	int len = 0;
 
