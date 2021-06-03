@@ -14,6 +14,7 @@ int main()
 	// 调用 operator>>(istream&, String&)
 	while (cin >> buf) {
 		++wdCnt;
+		// 调用 operator<<(ostream&, const String&)
 		cout << buf << ' ';
 		if (wdCnt % 12 == 0)
 			cout << endl;
@@ -39,7 +40,6 @@ int main()
 		}
 	}
 
-	// 调用 operator<<(ostream&, const String&)
 	cout << "\n\n"
 		<< "Words read: " << wdCnt << "\n\n"
 		<< "the/The: " << theCnt << "\n\n"
