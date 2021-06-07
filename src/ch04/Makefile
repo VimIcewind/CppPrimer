@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = char_overflow bool2num
+OBJECT = char_overflow bool2num ptrtest
 
 all : $(OBJECT)
 
