@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = char_overflow bool2num ptrtest inc complex complexinc minmax sizeof
+OBJECT = char_overflow bool2num ptrtest inc complex complexinc minmax sizeof bit \
 
 all : $(OBJECT)
 
