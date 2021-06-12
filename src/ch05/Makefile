@@ -1,9 +1,12 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = declaration
+OBJECT = declaration ilistTest
 
 all : $(OBJECT)
+
+ilistTest : ilistTest.cpp ilist.h
+	$(CC) $(CFLAGS) -o $@ $<
 
 .cpp.s :
 	$(CC) $(CFLAGS) -S $*.cpp
