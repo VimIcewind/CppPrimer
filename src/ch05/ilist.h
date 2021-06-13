@@ -64,6 +64,10 @@ public:
 
 	int remove(int value);
 
+	void concat(const ilist&);
+
+	void reverse();
+
 private:
 	ilist(const ilist&);
 	ilist& operator=(const ilist&);
@@ -203,6 +207,33 @@ int ilist::remove(int value)
 		}
 	}
 	return elem_cnt;
+}
+
+void ilist::concat(const ilist &il)
+{
+	ilist_item *ptr = il._at_front;
+
+	while (ptr) {
+		insert_end(ptr->value());
+		ptr = ptr->next();
+	}
+}
+
+void ilist::reverse()
+{
+	ilist_item *ptr = _at_front;
+	ilist_item *prev = 0;
+
+	_at_front = _at_end;
+	_at_end = ptr;
+
+	while (ptr != _at_front) {
+		ilist_item *tmp = ptr->next();
+		ptr->next(prev);
+		prev = ptr;
+		ptr = tmp;
+	}
+	_at_front->next(prev);
 }
 
 #endif /* end of include guard: ILIST_H */

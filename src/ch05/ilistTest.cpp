@@ -20,6 +20,7 @@ int main()
 	cout << "\n"
 		<< "Searching for the value 8: found it<<"
 		<< (it ? " yes!\n" : " no!\n" );
+	mylist.insert(it, 1024);
 
 	cout << "\n"
 		<< "Inserting element 1024 following the value 8\n";
