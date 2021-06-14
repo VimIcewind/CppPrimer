@@ -74,7 +74,7 @@ int main()
 	// 用 0 初始化 pi -- 即，pi 当前不指向任何对象。
 	int pi0 = 0;
 	// 但当我们写如下语句时：
-	const int &ri = 0;
+	const int &ri0 = 0;
 
 	// 引用的赋值是第二个不同。
 
