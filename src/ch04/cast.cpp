@@ -100,11 +100,11 @@ void oldcast()
 
 	char *pc2 = rewrite_str((char *) pc);
 	// int addr_value = int(&ival);
-	long addr_value = long(&ival);
+	// long addr_value = long(&ival);
 
 	cout << pc << endl;
 	cout << pc2 << endl;
-	cout << addr_value << endl;
+	// cout << addr_value << endl;
 }
 
 int main()
