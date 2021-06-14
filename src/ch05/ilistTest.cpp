@@ -39,7 +39,8 @@ int main()
 
 	cout << "\n" << "Removed all elements\n";
 
-	mylist.remove_all(); mylist.display();
+	mylist.remove_all();
+	mylist.display();
 
 	return 0;
 }
