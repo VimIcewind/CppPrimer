@@ -62,7 +62,7 @@ public:
 
 	void display(ostream &os = cout);
 
-	ilist_item* find(int value);
+	ilist_item* find(int value, ilist_item *start_at = 0);
 
 	void remove_front();
 	void remove_all();
@@ -157,12 +157,11 @@ inline void ilist::insert(ilist_item *ptr, int value)
 	}
 }
 
-ilist_item* ilist::find(int value)
+ilist_item* ilist::find(int value, ilist_item *start_at)
 {
-	ilist_item *ptr = _at_front;
+	ilist_item *ptr = start_at ? start_at : _at_front;
 
-	while (ptr)
-	{
+	while (ptr) {
 		if (ptr->value() == value)
 			break;
 		ptr = ptr->next();
