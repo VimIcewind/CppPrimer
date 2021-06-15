@@ -20,11 +20,15 @@ int main()
 	cout << "\n"
 		<< "Searching for the value 8: found it<<"
 		<< (it ? " yes!\n" : " no!\n");
+	int cnt = mylist.count(8);
+	cout << "Found the value 8: found it " << cnt << " time" << (cnt > 1 ? "s\n" : "\n");
 	mylist.insert(it, 1024);
 
 	cout << "\n"
 		<< "Inserting element 1024 following the value 8\n";
 	mylist.display();
+	cnt = mylist.count(1024);
+	cout << "Found the value 1024: found it " << cnt << " time" << (cnt > 1 ? "s\n" : "\n");
 
 	int elem_cnt = mylist.remove(8);
 

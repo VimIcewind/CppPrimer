@@ -64,6 +64,8 @@ public:
 
 	ilist_item* find(int value, ilist_item *start_at = 0);
 
+	int count(int value);
+
 	void remove_front();
 	void remove_all();
 
@@ -168,6 +170,19 @@ ilist_item* ilist::find(int value, ilist_item *start_at)
 	}
 
 	return ptr;
+}
+
+inline int ilist::count(int value)
+{
+	int cnt = 0;
+	ilist_item *i = 0;
+
+	while (i = find(value, i)) {
+		i = i->next();
+		cnt++;
+	}
+
+	return cnt;
 }
 
 void ilist::display(ostream &os)
