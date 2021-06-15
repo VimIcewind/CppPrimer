@@ -55,9 +55,9 @@ public:
 
 	int size();
 
-	void insert_front(int value);
-	void insert_end(int value);
-	void insert(ilist_item *ptr, int value);
+	ilist_item* insert_front(int value);
+	ilist_item* insert_end(int value);
+	ilist_item* insert(ilist_item *ptr, int value);
 	void insert_all(const ilist&);
 
 	void display(ostream &os = cout);
@@ -128,7 +128,7 @@ inline void ilist::bump_down_size()
 	--_size;
 }
 
-inline void ilist::insert_front(int value)
+inline ilist_item* ilist::insert_front(int value)
 {
 	ilist_item *ptr = new ilist_item(value);
 	if (!_at_front)
@@ -138,24 +138,31 @@ inline void ilist::insert_front(int value)
 		_at_front = ptr;
 	}
 	bump_up_size();
+
+	return ptr;
 }
 
-inline void ilist::insert_end(int value)
+inline ilist_item* ilist::insert_end(int value)
 {
 	if (!_at_end)
 		_at_end = _at_front = new ilist_item(value);
 	else
 		_at_end = new ilist_item(value, _at_end);
 	bump_up_size();
+
+	return _at_end;
 }
 
-inline void ilist::insert(ilist_item *ptr, int value)
+inline ilist_item* ilist::insert(ilist_item *ptr, int value)
 {
 	if (!ptr)
-		insert_front(value);
+		return insert_front(value);
 	else {
 		bump_up_size();
-		new ilist_item(value, ptr);
+		ilist_item *p = new ilist_item(value, ptr);
+		if (ptr == _at_end)
+			_at_end = p;
+		return p;
 	}
 }
 
