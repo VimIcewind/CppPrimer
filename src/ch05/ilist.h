@@ -73,8 +73,10 @@ public:
 	int remove(int value);
 
 	void concat(const ilist&);
+	ilist concat_copy(const ilist&);
 
 	void reverse();
+	ilist reverse_copy();
 
 	ilist_item* init_iter(ilist_item *it = 0);
 	ilist_item* next_iter();
@@ -287,6 +289,25 @@ void ilist::concat(const ilist &il)
 	}
 }
 
+ilist ilist::concat_copy(const ilist &il)
+{
+	ilist  newilist;
+	ilist_item *ptr = _at_front;
+
+	while (ptr) {
+		newilist.insert_end(ptr->value());
+		ptr = ptr->next();
+	}
+
+	ptr = il._at_front;
+	while (ptr) {
+		newilist.insert_end(ptr->value());
+		ptr = ptr->next();
+	}
+
+	return newilist;
+}
+
 void ilist::reverse()
 {
 	ilist_item *ptr = _at_front;
@@ -303,6 +324,20 @@ void ilist::reverse()
 	}
 	_at_front->next(prev);
 }
+
+ilist ilist::reverse_copy()
+{
+	ilist  newilist;
+	ilist_item *ptr = _at_front;
+
+	while (ptr) {
+		newilist.insert_front(ptr->value());
+		ptr = ptr->next();
+	}
+
+	return newilist;
+}
+
 
 inline ilist_item* ilist::init_iter(ilist_item *it)
 {
