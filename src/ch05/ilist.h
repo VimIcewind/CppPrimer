@@ -58,6 +58,7 @@ public:
 	ilist_item* insert_front(int value);
 	ilist_item* insert_end(int value);
 	ilist_item* insert(ilist_item *ptr, int value);
+	void insert(ilist_item *begin, int *array_of_value, int elem_cnt);
 	void insert_all(const ilist&);
 
 	void display(ostream &os = cout);
@@ -163,6 +164,15 @@ inline ilist_item* ilist::insert(ilist_item *ptr, int value)
 		if (ptr == _at_end)
 			_at_end = p;
 		return p;
+	}
+}
+
+void ilist::insert(ilist_item *begin, int *array_of_value, int elem_cnt)
+{
+	while (elem_cnt > 0) {
+		begin = insert(begin, *array_of_value);
+		array_of_value++;
+		elem_cnt--;
 	}
 }
 

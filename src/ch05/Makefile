@@ -2,7 +2,7 @@ CFLAGS=-g -Og
 CC=g++
 
 OBJECT = declaration ilistTest ilistRemoveTest ilistReverseConcatTest \
-	ilistConstructorTest listTest
+	ilistConstructorTest ilistInsertArrayTest listTest
 
 all : $(OBJECT)
 
@@ -17,6 +17,10 @@ ilistReverseConcatTest : ilistReverseConcatTest.cpp ilist.h
 
 ilistConstructorTest : ilistConstructorTest.cpp ilist.h
 	$(CC) $(CFLAGS) -o $@ $<
+
+ilistInsertArrayTest : ilistInsertArrayTest.cpp ilist.h
+	$(CC) $(CFLAGS) -o $@ $<
+
 
 listTest : listTest.cpp list.h
 	$(CC) $(CFLAGS) -o $@ $<
