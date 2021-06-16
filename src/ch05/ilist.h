@@ -40,7 +40,6 @@ inline ilist_item::ilist_item(int value, ilist_item *item) : _value(value)
 		_next = 0;
 	else {
 		_next = item->_next;
-		// TODO 检查下面一条语句是否正确
 		item->_next = this;
 	}
 }
