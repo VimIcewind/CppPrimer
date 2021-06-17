@@ -2,7 +2,7 @@ CFLAGS=-g -Og
 CC=g++
 
 OBJECT = declaration min switchdemo spaceCount fffiflCount \
-	fordemo is_equal isEqual \
+	fordemo is_equal isEqual sumit \
 	ilistTest ilistRemoveTest ilistReverseConcatTest \
 	ilistConstructorTest ilistInsertArrayTest listTest
 
