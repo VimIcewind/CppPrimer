@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = declaration ilistTest ilistRemoveTest ilistReverseConcatTest \
+OBJECT = declaration min ilistTest ilistRemoveTest ilistReverseConcatTest \
 	ilistConstructorTest ilistInsertArrayTest listTest
 
 all : $(OBJECT)
