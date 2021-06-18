@@ -5,6 +5,9 @@ OBJECT = size_capacity TextQuery
 
 all : $(OBJECT)
 
+TextQuery : TextQuery.cpp
+	$(CC) $(CFLAGS) -o $@ $<
+
 .cpp.s :
 	$(CC) $(CFLAGS) -S $*.cpp
 .cpp.o :
