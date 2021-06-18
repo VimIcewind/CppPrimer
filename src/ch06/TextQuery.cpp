@@ -213,9 +213,11 @@ void TextQuery::build_word_map()
 		copy(default_excluded_words, default_excluded_words+25,
 				inserter(exclusion_set, exclusion_set.begin()));
 	} else {
-		// TODO
+		// There is an error here.
+		// https://stackoverflow.com/questions/15832945/whats-wrong-with-this-iterator-declaration
 		// istream_iterator<string, diff_type> input_set(infile), eos;
-		// copy(input_set, eos, inserter(exclusion_set, exclusion_set.begin()));
+		istream_iterator<string, char, char_traits<char>, diff_type> input_set(infile), eos;
+		copy(input_set, eos, inserter(exclusion_set, exclusion_set.begin()));
 	}
 
 	// 遍历单词，输入键/值对
