@@ -26,7 +26,7 @@ public:
 		memset(this, 0, sizeof(TextQuery));
 	}
 
-	void filter_elements(string felems) {
+	static void filter_elements(string felems) {
 		filt_elems = felems;
 	}
 
@@ -55,8 +55,10 @@ private:
 	vector<string> *lines_of_text;
 	text_loc *text_locations;
 	map<string, loc*> *word_map;
-	string filt_elems;
+	static string filt_elems;
 };
+
+string TextQuery::filt_elems("\",.;:!<<)<\\/");
 
 int main()
 {
@@ -338,4 +340,3 @@ void TextQuery::display_text_locations()
 	}
 	cout << endl;
 }
-
