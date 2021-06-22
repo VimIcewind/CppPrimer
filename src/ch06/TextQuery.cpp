@@ -58,7 +58,7 @@ private:
 	static string filt_elems;
 };
 
-string TextQuery::filt_elems("\",.;:!<<)<\\/");
+string TextQuery::filt_elems("\",.;:!?)(\\/");
 
 int main()
 {
