@@ -298,7 +298,7 @@ void TextQuery::display_map_text()
 
 		loc::iterator liter = text_locs->begin(), liter_end = text_locs->end();
 
-		while( liter != liter_end) {
+		while(liter != liter_end) {
 			if (loc_cnt)
 				cout << ",";
 			else
