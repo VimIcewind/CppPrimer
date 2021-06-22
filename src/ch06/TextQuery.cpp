@@ -236,7 +236,8 @@ void TextQuery::build_word_map()
 			loc *ploc = new vector<location>;
 			ploc->push_back((*text_locs)[ix]);
 			word_map->insert(value_type((*text_words)[ix], ploc));
-		} else (*word_map)[(*text_words)[ix]]->push_back((*text_locs)[ix]);
+		} else
+			(*word_map)[(*text_words)[ix]]->push_back((*text_locs)[ix]);
 	}
 }
 
