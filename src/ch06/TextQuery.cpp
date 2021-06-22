@@ -282,9 +282,7 @@ void TextQuery::query_text()
 				<< (*lines_of_text)[line] << endl;
 		}
 		cout << endl;
-	}
-	while (!query_text.empty())
-		;
+	} while (!query_text.empty());
 	cout << "OK, bye!\n";
 }
 
