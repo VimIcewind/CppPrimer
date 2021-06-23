@@ -1,7 +1,8 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = size_capacity reserve resize container iterator insert erase assign swap TextQuery
+OBJECT = size_capacity reserve resize container iterator insert erase assign swap \
+	 algorithm TextQuery
 
 all : $(OBJECT)
 
