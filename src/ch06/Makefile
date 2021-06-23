@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = size_capacity reserve resize container iterator insert TextQuery
+OBJECT = size_capacity reserve resize container iterator insert erase TextQuery
 
 all : $(OBJECT)
 
