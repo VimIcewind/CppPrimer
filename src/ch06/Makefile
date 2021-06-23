@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = size_capacity reserve container TextQuery
+OBJECT = size_capacity reserve resize container TextQuery
 
 all : $(OBJECT)
 
