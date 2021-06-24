@@ -2,7 +2,7 @@ CFLAGS=-g -Og
 CC=g++
 
 OBJECT = size_capacity reserve resize container iterator insert erase assign swap \
-	 algorithm ivec TextQuery
+	 algorithm ivec ilist TextQuery
 
 all : $(OBJECT)
 
