@@ -174,7 +174,7 @@ void TextQuery::suffix_s(string &word)
 	// 去掉尾部的 's'
 	word.erase(pos3+2);
 
-	// watch out for "'s'"
+	// watch out for "'s"
 	if (word[pos3+1] == '\'')
 		word.erase(pos3+1);
 }
