@@ -2,7 +2,8 @@ CFLAGS=-g -Og
 CC=g++
 
 OBJECT = size_capacity reserve resize container iterator insert erase assign swap \
-	 algorithm ivec ilist find find_first_of findall rfind TextQuery
+	 algorithm ivec ilist find find_first_of findall rfind find_first_not_of \
+	 TextQuery
 
 all : $(OBJECT)
 
