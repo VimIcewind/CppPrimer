@@ -3,7 +3,7 @@ CC=g++
 
 OBJECT = size_capacity reserve resize container iterator insert erase assign swap \
 	 algorithm ivec ilist find find_first_of findall rfind find_first_not_of \
-	 TextQuery
+	 find_num_alph TextQuery
 
 all : $(OBJECT)
 
