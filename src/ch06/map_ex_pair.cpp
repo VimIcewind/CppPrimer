@@ -50,6 +50,7 @@ int main()
 		cout << name << endl;
 		for (vi = family[name].begin(); vi != family[name].end(); ++vi)
 			cout << name << "\t" << vi->first << "\t" << vi->second << endl;
+                name = "";
 		cout << "please enter family name: ";
 		cin >> name;
 	}
