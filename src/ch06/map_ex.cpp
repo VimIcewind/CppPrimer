@@ -45,7 +45,7 @@ int main()
 	string name;
 	cin >> name;
 
-	while (!name.empty() && !family.count(name)) {
+	while (!name.empty()) {
 		cout << name << endl;
 		for (vi = family[name].begin(); vi != family[name].end(); ++vi)
 			cout << name << "\t" << *vi << endl;
