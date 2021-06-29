@@ -141,6 +141,16 @@ void suffix_s(string &word)
 		return;
 	}
 
+	set<string> exclusion_set;
+	exclusion_set.insert("Pythagoras");
+	exclusion_set.insert("Brahms");
+	exclusion_set.insert("Burne_Jones");
+
+	if (exclusion_set.count(word)) {
+		cout << "\texclude \t" << word << endl;
+		return;
+	}
+
 	// 去掉尾部的 's'
 	word.erase(pos3+2);
 
