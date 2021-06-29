@@ -11,6 +11,9 @@ all : $(OBJECT)
 TextQuery : TextQuery.cpp
 	$(CC) $(CFLAGS) -o $@ $<
 
+map_ex: map_ex.cpp
+	$(CC) $(CFLAGS) -o $@ $<
+
 map_ex_pair : map_ex_pair.cpp
 	$(CC) $(CFLAGS) -o $@ $<
 
