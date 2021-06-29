@@ -4,7 +4,7 @@ CC=g++
 OBJECT = size_capacity reserve resize container iterator insert erase assign swap \
 	 algorithm ivec ilist find find_first_of findall rfind find_first_not_of \
 	 find_num_alph maxmin minmax erase_ex string_ex assign_append replace_ex \
-	 map map_ex map_ex_pair TextQuery
+	 map map_ex map_ex_pair EOF TextQuery
 
 all : $(OBJECT)
 
