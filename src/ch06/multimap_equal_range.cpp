@@ -17,7 +17,7 @@ void code_fragment()
 	authors.insert(valType(string("Haruki Murakami"), string("Haruki Book")));
 	authors.insert(valType(string("Haruki Murakami"), string("Murakami Book")));
 
-	while (cin && cin >> search_item)
+	while (getline(cin, search_item))
 		switch (authors.count(search_item)) {
 		// 不存在，继续往下走
 		case 0:
