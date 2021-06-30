@@ -5,7 +5,7 @@ OBJECT = size_capacity reserve resize container iterator insert erase assign swa
 	 algorithm ivec ilist find find_first_of findall rfind find_first_not_of \
 	 find_num_alph maxmin minmax erase_ex string_ex assign_append replace_ex \
 	 map map_ex map_ex_pair EOF text_query book TextQuery multimap_find_count \
-	 multimap_equal_range stack TextQueryMultimap
+	 multimap_equal_range stack StackTest TextQueryMultimap
 
 all : $(OBJECT)
 
@@ -16,6 +16,9 @@ map_ex: map_ex.cpp
 	$(CC) $(CFLAGS) -o $@ $<
 
 map_ex_pair : map_ex_pair.cpp
+	$(CC) $(CFLAGS) -o $@ $<
+
+Stack : StackTest.cpp Stack.h
 	$(CC) $(CFLAGS) -o $@ $<
 
 .cpp.s :
