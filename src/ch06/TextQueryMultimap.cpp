@@ -1,0 +1,322 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <vector>
+#include <utility>
+#include <iterator>
+#include <map>
+#include <set>
+
+#include <fstream>
+
+#include <string.h>
+#include <stddef.h>
+#include <ctype.h>
+
+using namespace std;
+
+typedef pair<short, short> location;
+typedef vector<location> loc;
+typedef vector<string> text;
+typedef pair<text*, loc*> text_loc;
+
+class TextQuery {
+public:
+	TextQuery() {
+		memset(this, 0, sizeof(TextQuery));
+	}
+
+	static void filter_elements(string felems) {
+		filt_elems = felems;
+	}
+
+	void query_text();
+	void display_map_text();
+	void display_text_locations();
+	void doit() {
+		retrieve_text();
+		separate_words();
+		filter_text();
+		suffix_text();
+		strip_caps();
+		build_word_map();
+	}
+
+private:
+	void retrieve_text();
+	void separate_words();
+	void filter_text();
+	void strip_caps();
+	void suffix_text();
+	void suffix_s(string&);
+	void build_word_map();
+
+private:
+	vector<string> *lines_of_text;
+	text_loc *text_locations;
+	multimap<string, location> *word_map;
+	static string filt_elems;
+};
+
+string TextQuery::filt_elems("\",.;:!?)(\\/");
+
+int main()
+{
+	TextQuery tq;
+
+	tq.doit();
+	tq.query_text();
+	tq.display_map_text();
+
+	return 0;
+}
+
+void TextQuery::retrieve_text()
+{
+	string file_name;
+
+	cout << "Please enter file name: ";
+	cin >> file_name;
+	ifstream infile(file_name.c_str(), ios::in);
+	if (!infile) {
+		cerr << "oops! unable to open file "
+			<< file_name << " -- bailing out!\n";
+		exit(-1);
+	} else
+		cout << "\n";
+	lines_of_text = new vector<string>;
+	string textline;
+	while (getline(infile, textline, '\n'))
+		lines_of_text->push_back(textline);
+}
+
+void TextQuery::separate_words()
+{
+	vector<string> *words = new vector<string>;
+	vector<location> *locations = new vector<location>;
+
+	for (size_t line_pos = 0; line_pos < lines_of_text->size(); line_pos++) {
+		short word_pos = 0;
+		string textline = (*lines_of_text)[line_pos];
+		// string::size_type eol = textline.length();
+		string::size_type pos = 0, prev_pos = 0;
+		while ((pos = textline.find_first_of(' ', pos)) != string::npos) {
+			words->push_back(textline.substr(prev_pos, pos - prev_pos));
+			locations->push_back(make_pair(line_pos, word_pos));
+			word_pos++;
+			pos++;
+			prev_pos = pos;
+		}
+		words->push_back(textline.substr(prev_pos, pos - prev_pos));
+		locations->push_back(make_pair(line_pos, word_pos));
+	}
+	text_locations = new text_loc(words, locations);
+}
+
+void TextQuery::filter_text()
+{
+	if (filt_elems.empty())
+		return;
+	vector<string> *words = text_locations->first;
+	vector<string>::iterator iter = words->begin();
+	vector<string>::iterator iter_end = words->end();
+
+	while (iter != iter_end) {
+		string::size_type pos = 0;
+		while ((pos = (*iter).find_first_of(filt_elems, pos)) != string::npos)
+			(*iter).erase(pos, 1);
+		++iter;
+	}
+}
+
+void TextQuery::suffix_text()
+{
+	vector<string> *words = text_locations->first;
+	vector<string>::iterator iter = words->begin();
+	vector<string>::iterator iter_end = words->end();
+
+	while (iter != iter_end) {
+		if ((*iter).size() <= 3) {
+			iter++;
+			continue;
+		}
+		if ((*iter)[(*iter).size() - 1] == 's')
+			suffix_s(*iter);
+
+		// 其他的后缀处理放在这里
+		iter++;
+	}
+}
+
+void TextQuery::suffix_s(string &word)
+{
+	string::size_type spos = 0;
+	string::size_type pos3 = word.size() - 3;
+	// "ous", "ss", "is", "ius"
+	string suffixes("oussisius");
+
+	if (!word.compare(pos3, 3, suffixes, spos, 3) ||
+			!word.compare(pos3, 3, suffixes, spos+6, 3) ||
+			!word.compare(pos3+1, 2, suffixes, spos+2, 2) ||
+			!word.compare(pos3+1, 2, suffixes, spos+4, 2))
+		return;
+	string ies("ies");
+	if (!word.compare(pos3, 3, ies)) {
+		word.replace(pos3, 3, 1, 'y');
+		return;
+	}
+	string ses("ses");
+	if (!word.compare(pos3, 3, ses)) {
+		word.erase(pos3+1, 2);
+		return;
+	}
+
+	// 去掉尾部的 's'
+	word.erase(pos3+2);
+
+	// watch out for "'s"
+	if (word[pos3+1] == '\'')
+		word.erase(pos3+1);
+}
+
+void TextQuery::strip_caps()
+{
+	vector<string> *words = text_locations->first;
+	vector<string>::iterator iter = words->begin();
+	vector<string>::iterator iter_end = words->end();
+	string caps("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+	while (iter != iter_end) {
+		string::size_type pos = 0;
+		while ((pos = (*iter).find_first_of(caps, pos)) != string::npos)
+			(*iter)[pos] = tolower((*iter)[pos]);
+		++iter;
+	}
+}
+
+void TextQuery::build_word_map()
+{
+	word_map = new multimap<string, location>;
+
+	typedef multimap<string, location>::value_type value_type;
+	typedef set<string>::difference_type diff_type;
+	set<string> exclusion_set;
+	ifstream infile("exclusion_set");
+
+	if (!infile) {
+		static string default_excluded_words[25] = {
+			"the", "and", "but", "that", "then", "are", "been",
+			"can", "can't", "cannot", "could", "did", "for",
+			"had", "have", "him", "his", "her", "its", "into",
+			"were", "which", "when", "with", "would"
+		};
+		cerr << "warning! unable to open word exclusion file! --"
+			<< "using default set\n";
+		copy(default_excluded_words, default_excluded_words+25,
+				inserter(exclusion_set, exclusion_set.begin()));
+	} else {
+		// There is an error here.
+		// https://stackoverflow.com/questions/15832945/whats-wrong-with-this-iterator-declaration
+		// istream_iterator<string, diff_type> input_set(infile), eos;
+		istream_iterator<string, char, char_traits<char>, diff_type> input_set(infile), eos;
+		copy(input_set, eos, inserter(exclusion_set, exclusion_set.begin()));
+	}
+
+	// 遍历单词，输入键/值对
+	vector<string> *text_words = text_locations->first;
+	vector<location> *text_locs = text_locations->second;
+	register int elem_cnt = text_words->size();
+
+	for (int ix = 0; ix < elem_cnt; ++ix) {
+		string textword = (*text_words)[ix];
+		word_map->insert(value_type((*text_words)[ix], (*text_locs)[ix]));
+	}
+}
+
+void TextQuery::query_text()
+{
+	string query_text;
+
+	do {
+		cout << "enter a word against which to search the text.\n"
+			<< "to quit, enter a single character ==> ";
+		cin >> query_text;
+		if (query_text.size() < 2)
+			break;
+		string caps("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		string::size_type pos = 0;
+		while ((pos = query_text.find_first_of(caps, pos)) != string::npos)
+			query_text[pos] = tolower(query_text[pos]);
+		// 如果对 map 索引，输入 query_text, 如无说明没有要找的词
+		if (!word_map->count(query_text)) {
+			cout << "\nSorry. There are no entries for "
+				<< query_text << ".\n\n";
+			continue;
+		}
+
+		set<short> occurrence_lines;
+		int size = word_map->count(query_text);
+		multimap<string, location>::iterator iter;
+		iter = word_map->find(query_text);
+
+		while (size--) {
+			occurrence_lines.insert(occurrence_lines.end(), (*iter).second.first);
+			++iter;
+		}
+
+		size = occurrence_lines.size();
+		cout << "\n" << query_text
+			<< " occurs " << size
+			<< (size == 1 ? " time:" : " times:")
+			<< "\n\n";
+		set<short>::iterator it = occurrence_lines.begin();
+		for (; it != occurrence_lines.end(); ++it) {
+			int line = *it;
+			cout << "\t( line "
+				// 不要用从 0 开始有文本行把用户弄迷糊了
+				<< line + 1 << " ) "
+				<< (*lines_of_text)[line] << endl;
+		}
+		cout << endl;
+	} while (!query_text.empty());
+	cout << "OK, bye!\n";
+}
+
+void TextQuery::display_map_text()
+{
+	typedef multimap<string, location> map_text;
+	map_text::iterator iter = word_map->begin(), iter_end = word_map->end();
+
+	for (; iter != iter_end; iter++) {
+		cout << "word: " << (*iter).first << " (";
+		cout << (*iter).second.first << ",";
+		cout << (*iter).second.second << ")\n";
+	}
+	cout << endl;
+}
+
+void TextQuery::display_text_locations()
+{
+	vector<string> *text_words = text_locations->first;
+	vector<location> *text_locs = text_locations->second;
+
+	vector<string>::size_type elem_cnt = text_words->size();
+
+	if (elem_cnt != text_locs->size()) {
+		cerr << "oops! internal error: word and position vectors "
+			<< "are of unequal size \n"
+			<< "words: " << elem_cnt << " "
+			<< "locs: " << text_locs->size()
+			<< " -- bailing out!\n";
+		exit(-2);
+	}
+
+	for (vector<string>::size_type ix = 0; ix < elem_cnt; ix++) {
+		cout << "word: " << (*text_words)[ix] << "\t"
+			<< "location: ("
+			<< (*text_locs)[ix].first << ","
+			<< (*text_locs)[ix].second << ")"
+			<< "\n";
+	}
+	cout << endl;
+}
