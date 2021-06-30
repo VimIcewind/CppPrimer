@@ -278,7 +278,7 @@ void TextQuery::query_text()
 				<< (*lines_of_text)[line] << endl;
 		}
 		cout << endl;
-	} while (!query_text.empty());
+	} while (!query_text.empty() && !cin.eof());
 	cout << "OK, bye!\n";
 }
 
@@ -300,7 +300,7 @@ void TextQuery::display_text_locations()
 	vector<string> *text_words = text_locations->first;
 	vector<location> *text_locs = text_locations->second;
 
-	vector<string>::size_type elem_cnt = text_words->size();
+	register vector<string>::size_type elem_cnt = text_words->size();
 
 	if (elem_cnt != text_locs->size()) {
 		cerr << "oops! internal error: word and position vectors "
