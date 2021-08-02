@@ -1,0 +1,17 @@
+CFLAGS=-g -Og
+CC=g++
+
+OBJECT = main
+
+all : $(OBJECT)
+
+main : main.cpp
+	$(CC) $(CFLAGS) -o $@ $<
+
+.cpp.s :
+	$(CC) $(CFLAGS) -S $*.cpp
+.cpp.o :
+	$(CC) $(CFLAGS) -c $*.cpp
+
+clean :
+	rm -rf $(OBJECT) *.S *.s *.o
