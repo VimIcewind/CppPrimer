@@ -9,9 +9,9 @@ int main()
 	int i = 10;
 	int j = 20;
 
-	cout << "Before swap():\t: " << i << "\tj: " << j << endl;
+	cout << "Before swap():\ti: " << i << "\tj: " << j << endl;
 	swap(i, j);
-	cout << "After swap():\t: " << i << "\tj: " << j << endl;
+	cout << "After swap():\ti: " << i << "\tj: " << j << endl;
 
 	return 0;
 }

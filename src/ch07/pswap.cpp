@@ -9,9 +9,9 @@ int main()
 	int i = 10;
 	int j = 20;
 
-	cout << "Before pswap():\t: " << i << "\tj: " << j << endl;
+	cout << "Before pswap():\ti: " << i << "\tj: " << j << endl;
 	pswap(&i, &j);
-	cout << "After pswap():\t: " << i << "\tj: " << j << endl;
+	cout << "After pswap():\ti: " << i << "\tj: " << j << endl;
 
 	return 0;
 }
