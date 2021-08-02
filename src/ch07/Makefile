@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = main
+OBJECT = main swap pswap rswap
 
 all : $(OBJECT)
 
