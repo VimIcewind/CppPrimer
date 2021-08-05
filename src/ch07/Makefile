@@ -1,7 +1,7 @@
 CFLAGS=-g -Og
 CC=g++
 
-OBJECT = main swap pswap rswap look_up ptrswap
+OBJECT = main swap pswap rswap look_up ptrswap arrarg
 
 all : $(OBJECT)
 
